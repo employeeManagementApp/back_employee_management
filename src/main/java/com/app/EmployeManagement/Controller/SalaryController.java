@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/salary")
+@RequestMapping("salary")
 public class SalaryController {
     private final SalaryService salaryService;
 
