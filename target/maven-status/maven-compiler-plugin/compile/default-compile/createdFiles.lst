@@ -1,0 +1,13 @@
+com\app\EmployeManagement\Entity\Project.class
+com\app\EmployeManagement\Controller\SalaryController.class
+com\app\EmployeManagement\Repository\SalaryRepository.class
+com\app\EmployeManagement\EmployeManagementApplication.class
+com\app\EmployeManagement\Entity\User.class
+com\app\EmployeManagement\Repository\ProjectRepository.class
+com\app\EmployeManagement\Repository\UserRepository.class
+com\app\EmployeManagement\Service\UserService.class
+com\app\EmployeManagement\Controller\ProjectController.class
+com\app\EmployeManagement\Controller\UserController.class
+com\app\EmployeManagement\Service\SalaryService.class
+com\app\EmployeManagement\Service\ProjectService.class
+com\app\EmployeManagement\Entity\Salary.class

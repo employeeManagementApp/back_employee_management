@@ -1,0 +1,24 @@
+# Created at 2024-02-04T21:40:29.420
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2024-02-04T21:40:29.424
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# There is insufficient memory for the Java Runtime Environment to continue.'.
+
+# Created at 2024-02-04T21:40:29.427
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# Native memory allocation (malloc) failed to allocate 1145776 bytes for Chunk::new'.
+
+# Created at 2024-02-04T21:40:29.429
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# An error report file with more information is saved as:'.
+
+# Created at 2024-02-04T21:40:29.566
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# C:\Users\Mitsanta ANDRIAH\Desktop\back_employee_management\hs_err_pid9372.log'.
+
+# Created at 2024-02-04T21:40:29.567
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2024-02-04T21:40:29.569
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# Compiler replay data is saved as:'.
+
+# Created at 2024-02-04T21:40:29.597
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# C:\Users\Mitsanta ANDRIAH\Desktop\back_employee_management\replay_pid9372.log'.
+
