@@ -1,8 +1,6 @@
 package com.app.EmployeManagement.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -11,6 +9,7 @@ import java.util.Objects;
 @Table(name = "salary")
 public class Salary {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double amount;
     private double riseup;
