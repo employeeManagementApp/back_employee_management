@@ -1,8 +1,6 @@
 package com.app.EmployeManagement.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -13,10 +11,13 @@ import java.util.UUID;
 @Table(name = "\"user\"")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
+    @Column(name = "password")
     private String password;
     private Date birthdate;
     private String profil;
