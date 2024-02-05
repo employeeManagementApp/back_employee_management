@@ -1,8 +1,6 @@
 package com.app.EmployeManagement.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -12,6 +10,7 @@ import java.util.Objects;
 @Table(name = "project")
 public class Project {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private Time duration;
