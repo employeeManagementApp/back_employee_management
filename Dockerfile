@@ -11,7 +11,7 @@ COPY src /app/src
 RUN mvn package -DskipTests
 
 
-FROM eclipse-temurin:21-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 VOLUME /tmp
 WORKDIR /app
