@@ -13,12 +13,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
+
 import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-public class UserIt {
+public class UserIT {
     @Mock
     private UserRepository userRepository;
     @Mock
@@ -32,7 +32,6 @@ public class UserIt {
         UUID id1 = UUID.randomUUID();
         UUID id2 = UUID.randomUUID();
         User user1 = new User(id1, "John", "Rakoto", "rakoto.doe@example.com", "password", new Date(), "profil1", "address1", "gender1", "CIN1", "role1", null, null, 1);
-        User user3 = new User(id1, "John", "Doe", "john.doe@example.com", "password", new Date(), "profil1", "address1", "gender1", "CIN1", "role1", null, null, 1);
         User user2 = new User(id2, "Jane", "Doe", "jane.doe@example.com", "password", new Date(), "profil2", "address2", "gender2", "CIN2", "role2", null, null, 2);
 
         when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2));
