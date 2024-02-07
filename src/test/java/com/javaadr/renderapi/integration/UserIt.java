@@ -5,15 +5,15 @@ import com.javaadr.renderapi.Repository.UserRepository;
 import com.javaadr.renderapi.Service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.sql.Timestamp;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -64,5 +64,21 @@ public class UserIt {
         assertThat(user.getFirstname()).isEqualTo("Jane");
         assertThat(user.getLastname()).isEqualTo("Doe");
         assertThat(user.getEmail()).isEqualTo("jane.doe@example.com");
+    }
+    @Test
+    public void testUpdateUser_UserExists() {
+        UUID existingUserId = UUID.randomUUID();
+
+        User existingUser = new User(existingUserId, "Rakoto", "Safidy", "john.doe@example.com", "oldpassword", new Date(), "profil1", "address1", "gender1", "CIN1", "role1", null, null, 1);
+
+        User updatedUser = new User(existingUserId, "Randria", "Safidy", "jane.doe@example.com", "newpassword", new Date(), "profil2", "address2", "gender2", "CIN2", "role2", null, null, 2);
+
+        when(userRepository.findById(existingUserId)).thenReturn(Optional.of(existingUser));
+
+
+        userService.updateUser(existingUserId, updatedUser);
+        assertThat(existingUser.getFirstname()).isEqualTo("Randria");
+        assertThat(existingUser.getLastname()).isEqualTo("Safidy");
+
     }
 }
