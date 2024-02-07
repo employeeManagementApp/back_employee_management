@@ -1,4 +1,0 @@
-INSERT INTO "user" (id, firstname, lastname, email, password, birthdate, profil, address, gender, CIN, role, start_work_date, last_work_date, id_salary) VALUES
-    ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'John', 'Doe', 'john.doe@example.com', 'password123', '1990-05-15', 'profile1', '123 Main St, City, Country', 'M', '1234567890', 'employee', current_timestamp, NULL, '11111111-1111-1111-1111-111111111111'),
-    ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Jane', 'Smith', 'jane.smith@example.com', 'pass1234', '1988-10-20', 'profile2', '456 Elm St, City, Country', 'F', '0987654321', 'admin', current_timestamp, '2023-12-31T23:59:59Z', '22222222-2222-2222-2222-222222222222'),
-    ('cccccccc-cccc-cccc-cccc-cccccccccccc', 'Alice', 'Johnson', 'alice.johnson@example.com', 'abc123', '1995-03-10', 'profile3', '789 Oak St, City, Country', 'F', '1357924680', 'manager', current_timestamp, NULL, '33333333-3333-3333-3333-333333333333');
