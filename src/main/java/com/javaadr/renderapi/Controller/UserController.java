@@ -61,4 +61,9 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
+    @PutMapping("/userId")
+    public ResponseEntity<User> updateUser(@PathVariable UUID userId, @RequestBody User updateUser){
+        User user = userService.updateUser(userId, updateUser);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }
