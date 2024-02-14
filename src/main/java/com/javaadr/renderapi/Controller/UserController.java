@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -59,6 +60,24 @@ public class UserController {
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    @PostMapping("/{userId}/uploadImage")
+    public ResponseEntity<String> uploadImage(
+            @PathVariable UUID userId,
+            @RequestParam("image") MultipartFile image) {
+
+        try {
+            User savedUser = userService.saveUserWithImage(userId, image);
+
+            if (savedUser != null) {
+                return ResponseEntity.ok("Image téléchargée avec succès. Chemin : " + savedUser.getProfil());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utilisateur non trouvé pour l'ID : " + userId);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors du téléchargement de l'image.");
         }
     }
 }

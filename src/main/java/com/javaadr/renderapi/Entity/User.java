@@ -20,6 +20,7 @@ public class User {
     @Column(name = "password")
     private String password;
     private Date birthdate;
+    @Column(name = "profil")
     private String profil;
     private String address;
     private String gender;
