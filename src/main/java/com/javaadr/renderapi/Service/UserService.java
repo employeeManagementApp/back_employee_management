@@ -105,7 +105,27 @@ public class UserService {
             throw new RuntimeException("Erreur lors de la sauvegarde.");
         }
     }
+    public User updateUser(UUID userId, User updatedUser) {
+        User existingUser = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 
+        existingUser.setFirstname(updatedUser.getFirstname());
+        existingUser.setLastname(updatedUser.getLastname());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setPassword(updatedUser.getPassword());
+        existingUser.setBirthdate(updatedUser.getBirthdate());
+        existingUser.setProfil(updatedUser.getProfil());
+        existingUser.setAddress(updatedUser.getAddress());
+        existingUser.setGender(updatedUser.getGender());
+        existingUser.setCIN(updatedUser.getCIN());
+        existingUser.setRole(updatedUser.getRole());
+
+        return userRepository.save(existingUser);
+    }
+    public class ResourceNotFoundException extends RuntimeException {
+        public ResourceNotFoundException(String message) {
+            super(message);
+        }
+    }
 
 
 }

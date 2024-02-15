@@ -1,5 +1,6 @@
 package com.javaadr.renderapi.Controller;
 
+import com.javaadr.renderapi.Controller.Validator.UserValidator;
 import com.javaadr.renderapi.Entity.User;
 import com.javaadr.renderapi.Entity.UserCredentials;
 import com.javaadr.renderapi.Service.UserService;
@@ -19,9 +20,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("user")
 public class UserController {
+    private final UserValidator userValidator;
     private final UserService userService;
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserValidator userValidator, UserService userService) {
+        this.userValidator = userValidator;
         this.userService = userService;
     }
     @GetMapping("/all")
@@ -79,5 +82,11 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors du téléchargement de l'image.");
         }
+    }
+    @PutMapping("/userId")
+    public ResponseEntity<User> updateUser(@PathVariable UUID userId, @RequestBody User updateUser){
+        userValidator.validate(updateUser);
+        User user = userService.updateUser(userId, updateUser);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
