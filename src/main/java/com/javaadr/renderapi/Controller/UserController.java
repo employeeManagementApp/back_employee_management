@@ -3,6 +3,8 @@ package com.javaadr.renderapi.Controller;
 import com.javaadr.renderapi.Controller.Validator.UserValidator;
 import com.javaadr.renderapi.Entity.User;
 import com.javaadr.renderapi.Entity.UserCredentials;
+import com.javaadr.renderapi.Entity.UserQuality;
+import com.javaadr.renderapi.Service.UserQualityService;
 import com.javaadr.renderapi.Service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -22,10 +24,12 @@ import java.util.UUID;
 public class UserController {
     private final UserValidator userValidator;
     private final UserService userService;
+    private final UserQualityService userQualityService;
     @Autowired
-    public UserController(UserValidator userValidator, UserService userService) {
+    public UserController(UserValidator userValidator, UserService userService, UserQualityService updateUserQuality, UserQualityService userQualityService) {
         this.userValidator = userValidator;
         this.userService = userService;
+        this.userQualityService = userQualityService;
     }
     @GetMapping("/all")
     public List<User> findAll(){
@@ -89,4 +93,17 @@ public class UserController {
         User user = userService.updateUser(userId, updateUser);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+    @PutMapping("/{userId}/{qualityId}")
+    public ResponseEntity<UserQuality> updateUserQuality(@PathVariable("userId") UUID userId,
+                                                         @PathVariable("qualityId") Integer qualityId,
+                                                         @RequestParam("level") Double newLevel) {
+        UserQuality updatedUserQuality = userQualityService.updateUserQuality(userId, qualityId, newLevel);
+
+        if (updatedUserQuality != null) {
+            return new ResponseEntity<>(updatedUserQuality, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
